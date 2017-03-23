@@ -12,6 +12,15 @@ def decode(str_num, base):
     assert 2 <= base <= 36
     # TODO: Decode number
 
+    str_num = str_num[::-1]
+    result = 0
+    for i in range(0,len(str_num)):
+        cur_num = str_num[i]
+        cur_num = int(cur_num)
+        result +=  cur_num*(base**i)
+        # print cur_num
+    print result
+
 def encode(num, base):
     """
     Encode given number from base 10 to given base.
@@ -31,16 +40,17 @@ def convert(str_num, base1, base2):
 
 
 def main():
-    import sys
-    args = sys.argv[1:]  # Ignore script file name
-    if len(args) == 3:
-        str_num = args[0]
-        base1 = int(args[1])
-        base2 = int(args[2])
-        result = convert(str_num, base1, base2)
-        print('{} in base {} is {} in base {}'.format(str_num, base1, result, base2))
-    else:
-        print('Usage: {} number base1 base2'.format(sys.argv[0]))
+    decode('101',2)
+    # import sys
+    # args = sys.argv[1:]  # Ignore script file name
+    # if len(args) == 3:
+    #     str_num = args[0]
+    #     base1 = int(args[1])
+    #     base2 = int(args[2])
+    #     result = convert(str_num, base1, base2)
+    #     print('{} in base {} is {} in base {}'.format(str_num, base1, result, base2))
+    # else:
+    #     print('Usage: {} number base1 base2'.format(sys.argv[0]))
 
 
 if __name__ == '__main__':
