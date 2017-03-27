@@ -16,8 +16,12 @@ def decode(str_num, base):
     result = 0
     for i in range(0,len(str_num)):
         cur_num = str_num[i]
-        cur_num = int(cur_num)
-        result +=  cur_num*(base**i)
+        if cur_num.isdigit():
+            cur_num = int(cur_num)
+            result +=  cur_num*(base**i)
+        else:
+            # print(ord(cur_num.lower())-87)
+            result += (ord(cur_num.lower())-87)*(base**i)
         # print cur_num
     print result
 
@@ -30,6 +34,14 @@ def encode(num, base):
     assert 2 <= base <= 36
     # TODO: Encode number
 
+
+# for i in range(0,len(num)):
+#     print i
+
+for i in
+
+
+
 def convert(str_num, base1, base2):
     """
     Convert given number from base1 to base2.
@@ -40,7 +52,8 @@ def convert(str_num, base1, base2):
 
 
 def main():
-    decode('101',2)
+    decode('A',16)
+    encode("c",2)
     # import sys
     # args = sys.argv[1:]  # Ignore script file name
     # if len(args) == 3:
