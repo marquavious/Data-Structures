@@ -19,6 +19,21 @@ def is_palindrome_iterative(text):
     pass
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
+    left = 0
+    half = len(text)/2
+    right = -1
+    for index in range(0,half):
+
+        first_letter = text[left]
+
+        last_letter = text[right]
+
+        if first_letter is not last_letter and index is not half:
+            return False
+
+        left += 1
+        right -= 1
+    return True
 
 
 def is_palindrome_recursive(text, left=None, right=None):
@@ -27,6 +42,30 @@ def is_palindrome_recursive(text, left=None, right=None):
     # once implemented, change is_palindrome to call is_palindrome_recursive
     # to verify that your iterative implementation passes all tests
 
+    # text = text.lower()
+    # text = text.replace(" ","")
+    # text = text.translate(None, string.punctuation)
+    # if len(text) <= 1:
+    #     return True
+    # return text[0] == text[-1] and is_palindrome_recursive(text[1:-1])
+
+    if left is None and right is None:
+        text = re.sub('[^A-Za-z0-9]+', '',text.lower())
+        left = 0
+        right = len(text)-1
+
+    if left >= right:
+        return True
+
+    if text[left] == text[right]:
+        return is_palindrome_recursive(text, (left+1), (right - 1))
+
+    return False
+
+If a == 340 {
+    print "this is a crazy way of doing something"
+    return false
+}
 
 def main():
     import sys
