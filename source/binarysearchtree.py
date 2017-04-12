@@ -15,10 +15,7 @@ class BinaryNode(object):
     def is_leaf(self):
         """Return True if this node is a leaf (has no children)"""
         # TODO: Check if both left child and right child have no value
-        if self.left == None and self.right == None:
-            return True
-        else:
-            return False
+        return self.left is None and self.right is None
 
     def is_internal(self):
         """Return True if this node is internal (has at least one child)"""
@@ -107,7 +104,7 @@ class BinarySearchTree(object):
         # Loop until we descend past the closest leaf node
         while node is not None:
             # TODO: Check if the given item matches the node's data
-            if node.data == item:
+            if item == node.data:
                 # Return the parent of the found node
                 return parent
             # TODO: Check if the given item is less than the node's data
@@ -155,12 +152,14 @@ class BinarySearchTree(object):
         if items is None:
             items = list()
         # TODO: Traverse left subtree, if it exists
-        ...
-        # TODO: Add this node's data to the items list
-        ...
-        # TODO: Traverse right subtree, if it exists
-        ...
-        # Return the items list to the original caller
+        if node.left is not None:
+                self.items_in_order(node.left)
+            # TODO: Add this node's data to the items list
+                self.items.append(node)
+            # TODO: Traverse right subtree, if it exists
+        if node.right is not None:
+                self.items_in_order(node.right)
+            # Return the items list to the original caller
         return items
 
     def items_pre_order(self, node=None, items=None):
@@ -174,10 +173,6 @@ class BinarySearchTree(object):
         # TODO: Add this node's data to the items list
         ...
         # TODO: Traverse left subtree, if it exists
-        ...
-        # TODO: Traverse right subtree, if it exists
-        ...
-        # Return the items list to the original caller
         return items
 
     def items_post_order(self, node=None, items=None):
